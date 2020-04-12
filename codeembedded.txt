@@ -1,0 +1,26 @@
+
+int led = D7;
+int input = D6;
+void setup() 
+{
+  pinMode(input, INPUT);
+  pinMode(led,OUTPUT);
+}
+
+void loop() 
+{
+  digitalWrite(led, HIGH);
+  if (digitalRead(input) == HIGH) 
+  {
+    String PIR = ("1");
+    Particle.publish("PIR ", PIR, PRIVATE);
+  }
+  else 
+  {
+    String PIR = ("0");
+    Particle.publish("PIR", PIR, PRIVATE);
+  }
+  delay(5000);
+  digitalWrite(led, LOW);
+  delay(5000);
+}
